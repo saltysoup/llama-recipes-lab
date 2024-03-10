@@ -20,7 +20,7 @@ export MODEL_NAME="meta-llama/Llama-2-7b-chat-hf"
 #export MODEL_NAME="meta-llama/Llama-2-7b-hf"
 export MODEL_NAME_NEW="${MODEL_NAME}_new"
 export MODEL_OUTPUT_DIR="/bucket/model/${MODEL_NAME_NEW}"
-export MODEL_CHECKPOINT_ROOT_DIR="/bucket/checkpoints/"
+export MODEL_CHECKPOINT_ROOT_DIR="/bucket/checkpoints"
 export MODEL_CHECKPOINT_FOLDER="$MODEL_NAME_NEW"
 #export TEMP=/scratch # this will use local SSDs configured for A2 VMs in the A100 slurm partition
 
