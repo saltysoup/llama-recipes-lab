@@ -8,6 +8,7 @@
 #SBATCH --time=01:00:00
 
 # To access llama2 model on HF
+echo "setting HF token to download base model"
 HUGGINGFACE_TOKEN="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"
 huggingface-cli login --token $HUGGINGFACE_TOKEN
 
@@ -33,10 +34,6 @@ export LOGLEVEL=INFO
 #export NCCL_ASYNC_ERROR_HANDLING=1
 #export TORCH_CPP_LOG_LEVEL=INFO
 #export TORCH_DISTRIBUTED_DEBUG=DETAIL
-
-echo "setting HF token to download base model"
-HUGGINGFACE_TOKEN="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"
-huggingface-cli login --token $HUGGINGFACE_TOKEN
 
 echo "starting training now.. on ${SLURM_NNODES} nodes with ${SLURM_GPUS} GPUs each"
 
