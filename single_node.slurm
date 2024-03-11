@@ -13,10 +13,12 @@ HUGGINGFACE_TOKEN="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"
 huggingface-cli login --token $HUGGINGFACE_TOKEN
 
 # We grab the first node address to act as the head node for multi node training
-head_node_ip=127.0.0.1
+echo "NODELIST="${SLURM_NODELIST}
+head_node_ip=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
 head_node_port=29500
 export MASTER_ADDR=$head_node_ip
 export MASTER_PORT=$head_node_port
+
 export MODEL_NAME="meta-llama/Llama-2-7b-chat-hf"
 #export MODEL_NAME="meta-llama/Llama-2-7b-hf"
 export MODEL_NAME_NEW="${MODEL_NAME}_new"
