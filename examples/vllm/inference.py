@@ -2,7 +2,7 @@
 # This software may be used and distributed according to the terms of the Llama 2 Community License Agreement.
 
 import fire
-
+import time
 import torch
 from vllm import LLM
 from vllm import LLM, SamplingParams
@@ -36,10 +36,17 @@ def main(
         print(f"sampling params: top_p {top_p} and temperature {temperature} for this inference request")
         sampling_param = SamplingParams(top_p=top_p, temperature=temperature, max_tokens=max_new_tokens)
         
-
+        start_time = time.perf_counter()
         outputs = model.generate(user_prompt, sampling_params=sampling_param)
-   
+        end_time = time.perf_counter()
+        elapsed_time = start_time-end_time
+
         print(f"model output:\n {user_prompt} {outputs[0].outputs[0].text}")
+        print("*******")
+        print(f"elapsed time: {start_time - end_time:0.4f} seconds")
+        print(f"tokens per sec (throughput): {-1 * max_new_tokens / elapsed_time:0.4f}")
+        print("*******")
+        
         user_prompt = input("Enter next prompt (press Enter to exit): ")
         if not user_prompt:
             break
