@@ -9,7 +9,7 @@
 
 # To access llama2 model on HF
 echo "setting HF token to download base model"
-HUGGINGFACE_TOKEN="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"
+HUGGINGFACE_TOKEN="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"
 huggingface-cli login --token $HUGGINGFACE_TOKEN
 
 # We grab the first node address to act as the head node for multi node training
