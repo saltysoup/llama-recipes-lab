@@ -7,8 +7,9 @@
 #SBATCH --gpus=8
 #SBATCH --time=01:00:00
 
-# To access llama2 model on HF
+# To access llama3 model on HF
 echo "setting HF token to download base model"
+source ~/llama-recipes-lab/qwiklab/bin/activate
 HUGGINGFACE_TOKEN="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"
 huggingface-cli login --token $HUGGINGFACE_TOKEN
 
@@ -19,13 +20,11 @@ head_node_port=29500
 export MASTER_ADDR=$head_node_ip
 export MASTER_PORT=$head_node_port
 
-export MODEL_NAME="meta-llama/Llama-2-7b-chat-hf"
-#export MODEL_NAME="meta-llama/Llama-2-7b-hf"
+export MODEL_NAME="meta-llama/Llama-3.1-8B-Instruct"
 export MODEL_NAME_NEW="${MODEL_NAME}_new"
 export MODEL_OUTPUT_DIR="/bucket/model/${MODEL_NAME_NEW}"
 export MODEL_CHECKPOINT_ROOT_DIR="/bucket/checkpoints"
 export MODEL_CHECKPOINT_FOLDER="$MODEL_NAME_NEW"
-#export TEMP=/scratch # this will use local SSDs configured for A2 VMs in the A100 slurm partition
 
 # debugging flags (optional)
 export PYTHONFAULTHANDLER=1
