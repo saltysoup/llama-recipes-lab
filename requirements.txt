@@ -1,6 +1,6 @@
-torch
-torchvision
-torchaudio
+torch==2.4.0
+torchvision==2.4.0
+torchaudio==2.4.0
 huggingface_hub[cli]
 accelerate
 appdirs
