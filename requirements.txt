@@ -1,6 +1,7 @@
-pytorch
+torch
 torchvision
 torchaudio
+huggingface_hub[cli]
 accelerate
 appdirs
 loralib
