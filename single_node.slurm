@@ -9,7 +9,6 @@
 
 # To access llama3 model on HF
 echo "setting HF token to download base model"
-source ~/llama-recipes-lab/qwiklab/bin/activate
 HUGGINGFACE_TOKEN="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"
 huggingface-cli login --token $HUGGINGFACE_TOKEN
 
